@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>  
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+   
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"    
+        android:background="#33CEC3"
+        android:textColor="#FFF"
+        android:textSize="20dp"
+        android:text="설정 "
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/modify"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="정보 수정 "
+        android:textSize="16sp"/>
+
+    <Button
+        android:id="@+id/register"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="회원 가입 "
+        android:textSize="16sp" />
+</LinearLayout> 

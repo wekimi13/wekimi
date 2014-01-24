@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:orientation="vertical" 
+                           
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent" 
+    android:weightSum="1">
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"    
+        android:background="#33CEC3"
+        android:textColor="#FFF"
+        android:textSize="20dp"
+        android:text="도움 주기 "
+        android:textStyle="bold"
+        android:gravity="center"/>
+  
+<ScrollView 
+    android:id="@+id/scrollView1" 
+    android:layout_height="wrap_content" 
+    android:layout_width="match_parent">
+<LinearLayout 
+    android:id="@+id/linearLayout1" 
+    android:orientation="vertical" 
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent" 
+    android:weightSum="1">
+<TextView 
+    android:id="@+id/address3" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" /> 
+    <LinearLayout 
+        android:id="@+id/MapContainer" 
+        android:layout_width="fill_parent" 
+        android:layout_height="wrap_content" 
+        android:layout_weight="1" 
+        android:orientation="vertical" /> 
+        
+    
+           <ImageView
+        android:id="@+id/message_topbar"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:src="@drawable/message_topbar" />
+ 
+    
+  <EditText 
+      android:id="@+id/givehelp_msg"
+      android:layout_height="wrap_content" 
+      android:layout_width="match_parent" 
+      android:layout_weight="0.42"
+      android:text="안성은님이 택시 안에서 도움요청 합니다." /> 
+
+  <LinearLayout 
+    android:orientation="vertical" 
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent" 
+    android:weightSum="1">
+            <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"    
+        android:background="#C0C0C0"
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        android:layout_marginBottom="5dp"
+        android:text="보낼 사람 선택 " />
+              <LinearLayout 
+    android:orientation="horizontal" 
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content" 
+    android:weightSum="1">
+      
+  <CheckBox
+        android:id="@+id/bystander"
+        android:checked="true" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="주변인 " />
+    <CheckBox
+        android:id="@+id/police"
+        android:checked="true" 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="경찰 " />
+  </LinearLayout>
+   
+  </LinearLayout>
+  <Button 
+      android:layout_height="wrap_content" 
+      android:layout_width="fill_parent" 
+      android:text="전송" 
+      android:id="@+id/sendGiv" /> 
+
+ <!--  </ScrollView>
+  --> 
+  </LinearLayout>
+  </ScrollView>
+  </LinearLayout>
