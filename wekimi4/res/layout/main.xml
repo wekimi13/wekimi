@@ -2,27 +2,33 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical">
-    <LinearLayout
-        android:layout_weight="0.5"
+    android:orientation="vertical" 
+    android:background="@drawable/main_back">
+    
+        <LinearLayout
+        android:layout_weight="0.55"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp">
-        	<Button
-        		android:id="@+id/data"
-        		android:layout_width="match_parent"
-        		android:layout_height="fill_parent"
-        		android:background="#33CEC3"
-        		android:text="데이터 "
-       			android:textColor="#fff"
-        		android:textSize="15dp"
-        		android:textStyle="bold" >
-    		</Button>
-   </LinearLayout>
-    
-    <LinearLayout
+
+   <!--   <Button
+        android:id="@+id/data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="#33CEC3"
+        android:text="데이터 "
+        android:textColor="#fff"
+        android:textSize="15dp"
+        android:textStyle="bold" >
+    </Button>-->
+       </LinearLayout>
+
+            <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_marginRight="5dp"
@@ -30,47 +36,50 @@
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:orientation="horizontal"
-        android:layout_weight="4.5" >
+        android:layout_weight="5" >
         
-		 <ImageButton
-    		 android:id="@+id/emergency"
-    		 android:layout_width="fill_parent"
-    		 android:layout_height="fill_parent"
-   		  	 android:background="@color/simple_bg"
-   		  	 android:scaleType="fitXY"
-   		  	 android:src="@drawable/main_emer_b" />
-		 	
-	 </LinearLayout>
+    <ImageButton
+        android:id="@+id/emergency"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/main_emer"
+        android:scaleType="fitXY"
+        android:background="#0000"/>
 
+    	 </LinearLayout>
    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_weight="3"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="2.7"
         android:orientation="horizontal" >
 
         <ImageButton
             android:id="@+id/req_help"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:scaleType="fitXY"
-            android:background="@color/simple_bg"
             android:layout_weight=".5"
-            android:layout_marginRight="2.5dp"
-            android:src="@drawable/main_reqhelp_b"/>
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/main_reqhelp2"
+            android:scaleType="fitXY"
+            android:background="#0000" />
 
         <ImageButton
             android:id="@+id/giv_help"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:background="@color/simple_bg"
             android:layout_weight=".5"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/main_givhelp2"
             android:scaleType="fitXY"
-            android:layout_marginLeft="2.5dp"
-            android:src="@drawable/main_givehelp_b" />
-
+            android:background="#0000"  />
     </LinearLayout>
 
     <LinearLayout
@@ -79,30 +88,30 @@
         android:orientation="horizontal"
         android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginBottom="5dp"
-        android:layout_weight="2"
+        android:layout_marginBottom="15dp"
+        android:layout_weight="1.8"
         android:weightSum="1.0" >
 
         <ImageButton
             android:id="@+id/siren"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_marginRight="2.5dp"
-            android:background="@color/simple_bg"
-            android:scaleType="fitXY"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:layout_weight=".5"
-            android:src="@drawable/main_siren_b" />
+            android:src="@drawable/main_siren" 
+            android:scaleType="fitXY" 
+            android:background="#0000"/>
 
         <ImageButton
             android:id="@+id/settings"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginLeft="2.5dp"
-            android:background="@color/simple_bg"
-            android:scaleType="fitXY"
+            android:layout_marginRight="15dp"
             android:layout_weight=".5"
-            android:src="@drawable/main_settings_b" />
-
+            android:background="#0000"
+            android:scaleType="fitXY" 
+            android:src="@drawable/main_settings" />
 
     </LinearLayout>
 

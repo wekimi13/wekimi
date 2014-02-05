@@ -2,7 +2,7 @@
 <LinearLayout 
     xmlns:android="http://schemas.android.com/apk/res/android" 
     android:orientation="vertical" 
-    android:background="@color/simple_bg"
+    android:background="@drawable/background_simplecolor"
    
                            
     android:layout_width="fill_parent" 
@@ -12,7 +12,7 @@
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:src="@drawable/reqhelp_topbar" />
 
     <LinearLayout 
@@ -22,15 +22,31 @@
     android:layout_height="wrap_content" 
     android:weightSum="1">
 
-<RelativeLayout
+<LinearLayout
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="5dp"
-    android:layout_marginLeft="5dp"
+    android:layout_marginBottom="7dp"
+    android:layout_marginLeft="7dp"
     android:layout_marginTop="5dp"
     android:layout_weight="29.14"
-    android:background="@drawable/back_profile" >
+    android:background="@drawable/background_profile" >
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="wrap_content"
+            android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/profile_image" />
      
+  <LinearLayout 
+    android:orientation="vertical" 
+           android:layout_marginRight="7dp"
+           android:layout_marginLeft="7dp"                
+    android:layout_width="wrap_content" 
+    android:layout_height="100dp" 
+    android:weightSum="1">
+    
   <TextView
             android:id="@+id/tvName"
             android:layout_width="wrap_content"
@@ -40,24 +56,35 @@
             android:textStyle="bold"
             android:text=""/>
   <TextView 
+      android:id="@+id/tvGender"
+      android:layout_width="wrap_content" 
+      android:layout_height="wrap_content" 
+      android:textSize="14dp"
+      android:color="#AAABAB"
+      android:textStyle="bold"
+      android:text=""
+      />
+ 
+  <TextView 
       android:id="@+id/tvDescription"
       android:layout_width="wrap_content" 
       android:layout_height="wrap_content" 
       android:textSize="14dp"
       android:color="#AAABAB"
       android:text=""
-      android:layout_below="@+id/tvName"/>
+      />
+  </LinearLayout>
 
   <ImageButton
       android:id="@+id/viewProfile"
-      android:layout_width="45dp"
-      android:layout_height="44dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:background="@color/ivorybg"
       android:layout_alignParentRight="true"
       android:layout_alignTop="@+id/tvName"
-      android:background="@color/simple_bg"
       android:src="@drawable/more" />
 
-      </RelativeLayout>
+      </LinearLayout>
 
   </LinearLayout>
  
@@ -79,27 +106,45 @@ android.layout_height="wrap_content">
     android:layout_width="fill_parent" 
     android:layout_height="fill_parent" 
     android:weightSum="1">
-<TextView 
-    android:id="@+id/address2" 
-    android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" /> 
+  <LinearLayout
+      android:id="@+id/linearLayout_map"
+      android:background="@drawable/back_map2"
+      android:layout_marginLeft="7pt"
+      android:layout_marginRight="7pt"
+      android:orientation="vertical"
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+     
+      android:weightSum="1">
+
     <LinearLayout 
         android:id="@+id/MapContainer" 
         android:layout_width="fill_parent" 
+
+      android:layout_margin="1pt"
         android:layout_height="200dp" 
-        android:layout_marginLeft="5pt"
-        android:layout_marginRight="5pt"
-        android:background="@drawable/back_map"
         android:layout_weight="1" 
         android:orientation="vertical" /> 
+        <TextView 
+    android:id="@+id/address2" 
+          android:layout_marginTop="3pt"
+          android:layout_marginBottom="3pt"
+    android:layout_width="fill_parent" 
+    android:gravity="center"
+    android:textSize="12dp"
+    android:textColor="#231F20"
+    
+    android:layout_height="wrap_content" /> 
+        </LinearLayout>
+
         <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="fill_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="2pt"
-        android:layout_marginLeft="5pt"
-        android:layout_marginRight="5pt"
-        android:src="@drawable/message_topbar" />
+            android:id="@+id/imageView2"
+            android:layout_width="85dp"
+            android:layout_height="18dp"
+            android:layout_marginBottom="2pt"
+            android:layout_marginTop="2pt"
+            android:src="@drawable/message_image" />
+
       <!--  <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -111,12 +156,15 @@ android.layout_height="wrap_content">
         android:text="메세지  " />-->
     <EditText 
       android:id="@+id/msg_text"
-      android:layout_height="wrap_content" 
+      
       android:layout_width="match_parent" 
+      android:layout_height="80dp"
       android:layout_weight="0.42"
-      android:layout_marginLeft="5pt"
-      android:layout_marginRight="5pt"
+      android:layout_marginLeft="7pt"
+      android:layout_marginRight="7pt"
+      android:textSize="15dp"
       android:background="@drawable/back"
+      android:gravity="top"
       android:text="안성은님이 택시 안에서 도움요청 합니다.\n" />
   <LinearLayout 
     android:orientation="vertical" 
@@ -125,26 +173,16 @@ android.layout_height="wrap_content">
             android:layout_marginLeft="3pt"
         android:layout_marginRight="3pt"
                 android:layout_marginBottom="5pt"
-    android:background="@drawable/back_menu"
+    android:background="@drawable/background_profile"
     android:weightSum="1">
-
-
-
-    <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:textSize="12dp"
-            android:layout_marginTop="2pt"
-            android:layout_marginLeft="2pt"
-            android:color="#ffffff"
-            android:layout_height="wrap_content"
-            android:text="상태 "/> 
+   
       <LinearLayout 
     android:id="@+id/linearLayout2" 
     android:orientation="horizontal" 
     android:layout_width="fill_parent" 
     android:layout_height="fill_parent"
           android:layout_marginLeft="2pt"
+          android:layout_marginTop="3pt"
       android:layout_marginRight="2pt" 
     android:weightSum="1">
 <!--  <Button 
@@ -152,37 +190,33 @@ android.layout_height="wrap_content">
       android:id="@+id/state_scared" 
       android:layout_width="wrap_content" 
       android:layout_height="wrap_content" /> -->
-
+    
+ <ImageView
+        android:id="@+id/state_image"
+       android:layout_width="wrap_content"
+     android:layout_height="44dp"
+     android:src="@drawable/state_image"  />
  <ImageButton
      android:id="@+id/state_scared"
-     android:layout_width="82dp"
+     android:layout_width="85dp"
      android:layout_height="44dp"
-     android:background="@color/simple_bg"
      android:src="@drawable/scaredbutton" />
 
  <ImageButton
      android:id="@+id/state_reqhelp"
-     android:layout_width="wrap_content"
-     android:layout_height="match_parent"
-     android:background="@color/simple_bg"
+      android:layout_width="85dp"
+     android:layout_height="44dp"
      android:src="@drawable/reqhelpbutton" />
 
   </LinearLayout>
-      <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:textSize="12dp"
-            android:layout_marginTop="2pt"
-            android:layout_marginLeft="2pt"
-            android:color="#ffffff"
-            android:layout_height="wrap_content"
-            android:text="위치 "/> 
+  
 <LinearLayout 
     android:id="@+id/linearLayout3" 
     android:orientation="horizontal" 
     android:layout_width="fill_parent" 
     android:layout_height="fill_parent" 
           android:layout_marginLeft="2pt"
+          android:layout_marginTop="1pt"
       android:layout_marginRight="2pt"
     android:weightSum="1">
 <!--   <Button 
@@ -190,50 +224,55 @@ android.layout_height="wrap_content">
       android:id="@+id/location_taxi" 
       android:layout_width="wrap_content" 
       android:layout_height="wrap_content" />-->
-
+ <ImageView
+        android:id="@+id/location_image"
+       android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:src="@drawable/location_image"  />
    <ImageButton
        android:id="@+id/location_taxi"
        android:layout_width="wrap_content"
-       android:layout_height="match_parent"
-       android:background="@color/simple_bg"
+                      android:layout_height="wrap_content"
+       android:background="@color/ivorybg"
        android:src="@drawable/taxibutton" />
       <ImageButton
        android:id="@+id/location_downtown"
        android:layout_width="wrap_content"
-       android:layout_height="match_parent"
-       android:background="@color/simple_bg"
+                      android:layout_height="wrap_content"
+       android:background="@color/ivorybg"
        android:src="@drawable/downtownbutton" />
             <ImageButton
        android:id="@+id/location_street"
        android:layout_width="wrap_content"
-       android:layout_height="match_parent"
-       android:background="@color/simple_bg"
+                      android:layout_height="wrap_content"
+       android:background="@color/ivorybg"
        android:src="@drawable/streetbutton" />
 
                   <ImageButton
                       android:id="@+id/location_onmywayhome"
-                      android:layout_width="match_parent"
-                      android:layout_height="match_parent"
-                      android:background="@color/simple_bg"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:background="@color/ivorybg"
                       android:src="@drawable/waytohomebutton" />
   </LinearLayout>
   </LinearLayout>
-           <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="fill_parent"
-        android:layout_height="30dp"
-        android:layout_marginTop="2pt"        
-        android:layout_marginLeft="5pt"
-        android:layout_marginRight="5pt"
-        android:src="@drawable/select1_topbar" />
+
+           
+                <ImageView
+            android:id="@+id/selection1_image"
+            android:layout_width="100dp"
+            android:layout_height="18dp"
+            android:layout_marginBottom="2pt"
+            android:layout_marginTop="2pt"
+            android:src="@drawable/selection1_image" />
   <LinearLayout 
     android:orientation="vertical" 
     android:layout_width="fill_parent" 
     android:layout_height="fill_parent"
-                android:layout_marginLeft="3pt"
-        android:layout_marginRight="3pt"
+                android:layout_marginLeft="7pt"
+        android:layout_marginRight="7pt"
                 android:layout_marginBottom="5pt"
-    android:background="@drawable/back_menu" 
+    android:background="@drawable/back_selection" 
     android:weightSum="1">
 
               <LinearLayout 
@@ -241,65 +280,90 @@ android.layout_height="wrap_content">
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content" 
                 android:layout_marginBottom="1pt" 
-    
+    android:background="@drawable/underbar"
     android:weightSum="1">
      <!--  --> 
     <CheckBox
         android:id="@+id/other1"
         android:checked="true" 
+        android:textColor="#231F20"
+        android:textSize="15dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:button="@drawable/checkbox"
-        android:layout_marginRight="12pt"
+        android:layout_marginRight="30pt"
         
         android:text="" />
     <CheckBox
         android:id="@+id/other2"
         android:checked="true" 
+        android:textSize="15dp"
+        android:textColor="#231F20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:button="@drawable/checkbox"
-                android:layout_marginRight="12pt"
+        android:layout_marginRight="30pt"
+            
         android:text="" />
-      <CheckBox
-        android:id="@+id/other3"
-        android:checked="true" 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:button="@drawable/checkbox"
-                android:layout_marginRight="12pt"
-        android:text="" />
+
       </LinearLayout>  
            <LinearLayout 
     android:orientation="horizontal" 
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content" 
                 android:layout_marginBottom="1pt" 
+                    android:background="@drawable/underbar"
+                
     android:weightSum="1">
       
+        <CheckBox
+        android:id="@+id/other3"
+        android:checked="true"
+        android:textSize="15dp"
+        android:textColor="#231F20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:button="@drawable/checkbox"
+       android:layout_marginRight="30pt"
+               android:text="" />
   <CheckBox
         android:id="@+id/other4"
-        android:checked="true" 
+        android:checked="true"
+        android:textColor="#231F20"
+        android:textSize="15dp" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:button="@drawable/checkbox"
-                        android:layout_marginRight="12pt"
+        android:layout_marginRight="30pt"
         android:text="" />
-    <CheckBox
+
+      </LinearLayout>
+                <LinearLayout 
+    android:orientation="horizontal" 
+    android:layout_width="wrap_content" 
+    android:layout_height="wrap_content" 
+                android:layout_marginBottom="1pt" 
+                    android:background="@drawable/underbar"
+                
+    android:weightSum="1">
+               <CheckBox
         android:id="@+id/other5"
-        android:checked="true" 
+        android:textSize="15dp"
+        android:checked="true"
+        android:textColor="#231F20"  
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:button="@drawable/checkbox"
-                        android:layout_marginRight="12pt"
-        android:text="" />
+       android:layout_marginRight="30pt"        android:text="" />
       <CheckBox
         android:id="@+id/other6"
+        android:textSize="15dp"
         android:checked="true" 
+        android:textColor="#231F20" 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:button="@drawable/checkbox"
-                        android:layout_marginRight="12pt"
+        android:layout_marginRight="30pt"
         android:text="" />
       </LinearLayout>
       
@@ -309,35 +373,39 @@ android.layout_height="wrap_content">
     android:layout_width="fill_parent" 
     android:layout_height="fill_parent" 
     android:weightSum="1">
-          <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="fill_parent"
-        android:layout_height="30dp"
-        android:layout_marginLeft="5pt"
-        android:layout_marginRight="5pt"
-        android:src="@drawable/select2_topbar" />
+             <ImageView
+            android:id="@+id/selection2_image"
+            android:layout_width="100dp"
+            android:layout_height="18dp"
+            android:layout_marginBottom="2pt"
+            android:layout_marginTop="2pt"
+            android:src="@drawable/selection2_image" />
              <LinearLayout 
     android:orientation="horizontal" 
     android:layout_width="wrap_content" 
     android:layout_height="wrap_content"     
-    android:background="@drawable/back_menu"
+    android:background="@drawable/background_profile"
+    
+                android:layout_marginLeft="9pt"
+    
     android:weightSum="1">
       
   <CheckBox
         android:id="@+id/bystander"
         android:checked="true" 
+        android:textColor="#231F20" 
         android:button="@drawable/checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-                        android:layout_marginRight="12pt"
+                        android:layout_marginRight="30pt"
         android:text="주변인 " />
       <CheckBox
         android:id="@+id/police"
         android:checked="true" 
+        android:textColor="#231F20" 
         android:button="@drawable/checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-                        android:layout_marginRight="12pt"
         android:text="경찰 " />
       </LinearLayout>
       
@@ -358,7 +426,7 @@ android.layout_height="wrap_content">
                       android:layout_height="wrap_content"
                       android:layout_marginBottom="5pt"
                       android:layout_marginLeft="60pt"
-                      android:background="@color/simple_bg"
+                      android:background="@color/themecolor"
                       android:src="@drawable/send" />
 
  <!--  </ScrollView>

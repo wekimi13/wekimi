@@ -3,5 +3,6 @@
 
     <string name="app_name">Wekimi</string>
     <string name="action_settings">Settings</string>
+    <string name="themecolor" >"#2EAFB2"</string>
 
 </resources>

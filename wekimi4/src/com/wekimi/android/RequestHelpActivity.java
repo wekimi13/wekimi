@@ -11,6 +11,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
 import android.graphics.Rect;
 import android.location.Address;
 import android.location.Criteria;
@@ -82,6 +83,7 @@ public class RequestHelpActivity extends NMapActivity implements OnMapStateChang
      {
            super.onCreate(savedInstanceState);
            setContentView(R.layout.reqhelp);
+           Log.v("myname",":"+((Person)this.getApplication()).getName());
            //
            ImageButton viewProfile = (ImageButton)findViewById(R.id.viewProfile);
            ImageButton sendreq = (ImageButton)findViewById(R.id.sendReq);
@@ -94,6 +96,7 @@ public class RequestHelpActivity extends NMapActivity implements OnMapStateChang
            final EditText msg_text = (EditText)findViewById(R.id.msg_text);
            //
            TextView tvName = (TextView)findViewById(R.id.tvName);
+           TextView tvGender = (TextView)findViewById(R.id.tvGender);
            TextView tvDescription = (TextView)findViewById(R.id.tvDescription);
           //
            final CheckBox other1 = (CheckBox)findViewById(R.id.other1);
@@ -115,8 +118,13 @@ public class RequestHelpActivity extends NMapActivity implements OnMapStateChang
            
            msg_text.setText(name+myLocation+myState);
            
-            tvName.setText(((Person)this.getApplication()).getName());
-      		tvDescription.setText(((Person)this.getApplication()).getPhone()+"/"+((Person)this.getApplication()).getGender()+"/"+((Person)this.getApplication()).getCharacter());
+           tvName.setText(((Person)this.getApplication()).getName());
+           tvName.setTextColor(Color.parseColor("#2EAFB2"));
+     		tvDescription.setText(((Person)this.getApplication()).getCharacter());
+     		tvDescription.setTextColor(Color.parseColor("#231F20"));
+     		
+     		tvGender.setText(((Person)this.getApplication()).getGender());
+     		tvGender.setTextColor(Color.parseColor("#9D9FA2"));
 
       		final String[] othername = ((Person)this.getApplication()).getOthername();
       		final String[] otherphone = ((Person)this.getApplication()).getOtherphone();

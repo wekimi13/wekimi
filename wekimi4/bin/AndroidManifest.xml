@@ -11,6 +11,12 @@
   <uses-permission android:name="android.permission.RECEIVE_SMS" /> 
   <uses-permission android:name="android.permission.READ_PHONE_STATE" /> 
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+  <uses-permission android:name="android.permission.CALL_PHONE" />
+  <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+  <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+  <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+  
   <uses-feature android:name="android.hardware.location" android:required="true" />
   <uses-feature android:name="android.hardware.location.gps" android:required="false" />
 
@@ -23,7 +29,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@android:style/Theme.NoTitleBar" >
         <activity
             android:name="WekimiMainActivity"
             android:label="@string/app_name" >
