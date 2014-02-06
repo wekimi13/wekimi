@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Locale;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -15,10 +16,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.location.Geocoder;
 import android.location.LocationManager;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
@@ -39,14 +42,14 @@ public class WekimiMainActivity extends FunctionActivity implements OnClickListe
 	String name;
 	String phone;
 	String gender;
-	String character;
+	String character;	
 	
 	public String myTel;
 		
 	TelephonyManager mTelephonyMgr;
 	public static String E_message = new String();            //First msg to send when in Emergency 
 	private String E_link = "[Wekimi]즉시 앱으로 연결하여";           //Second msg to send with link attached at the back
-	String link2 = "";
+	static String link2 = "";
 
 	
     /** Called when the activity is first created. */
@@ -54,20 +57,25 @@ public class WekimiMainActivity extends FunctionActivity implements OnClickListe
     public void onCreate(Bundle savedInstanceState)
     {
     	
+    	
     	this.registerReceiver(this.WifiStateChangedReceiver, new IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION));
     	WifiManager wifiManager = (WifiManager)getBaseContext().getSystemService(Context.WIFI_SERVICE);
         wifiManager.setWifiEnabled(true);
 
         startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+        //Intent F = new Intent(this, FunctionActivity.class);
+        //startActivity(F);
     	
         mTelephonyMgr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
         myTel = mTelephonyMgr.getLine1Number();
         new HttpAsyncTask().execute("http://wekimi13.cafe24app.com/user?phone=" + myTel);
         String myName = ((Person)this.getApplication()).getName();
         
+        
+        
     	
     	Log.v("telephone number", ":"+myTel+myName);
-        super.onCreate(savedInstanceState);
+    	super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
                 
 
@@ -81,7 +89,7 @@ public class WekimiMainActivity extends FunctionActivity implements OnClickListe
         
         E_message = "[Wekimi 위급알림]" + ((Person)this.getApplication()).getName()+ "님 매우 위급!\n 위치 :";
         E_link += ((Person)this.getApplication()).getName() + "님을 도와주세요!!\n 앱 연결 :bit.ly/18ll06r ";
-        link2 = "http://cheval1201.dothome.co.kr/wekimi.html?phone="+myTel;
+       
         
         siren.setOnClickListener(new Button.OnClickListener()
         {
@@ -95,11 +103,11 @@ public class WekimiMainActivity extends FunctionActivity implements OnClickListe
         {
             public void onClick(View v)
             {
-            	E_message += getAddress();
+            	E_message += ((FunctionActivity)FunctionActivity.FunctionContext).getAddress();
             	Log.v("the message to send is" , ":"+E_message+E_link+link2);
                 //sendSMS(E_message);
                 //sendSMS(E_link);
-                //sendSMS(link2);
+                ((FunctionActivity)FunctionActivity.FunctionContext).sendSMS(link2);
             	//Intent intent = new Intent(WekimiMainActivity.this, EmergencyActivity.class);
                 //startActivity(intent);
             }

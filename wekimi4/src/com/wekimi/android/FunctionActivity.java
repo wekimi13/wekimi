@@ -17,7 +17,6 @@ import android.location.Criteria;
 import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
-//import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 
@@ -27,59 +26,37 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
  
-public class FunctionActivity extends Activity
+public class FunctionActivity extends Activity implements LocationListener
 {
-	private LocationManager locationManager;
-	private String bestProvider;
-	//private String message = "[Wekimi]Sooyeon and Minjeong are in Emergency!!!\n Location :";
+	public static LocationManager locationManager;
+	public static String bestProvider;
 
-
-    static double latitude,longitude;
+    public static double latitude,longitude;
 	
-	String sendList[] = {"01094585713"};
+	//String sendList[] = {"01094585713"};
 
 	String s = "";
+	public static Context FunctionContext;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
     	super.onCreate(savedInstanceState);
-        setContentView(R.layout.emer);
-
-
-    	Log.v("Entered", "entered"+s);
-        
-        Button toMain = (Button)findViewById(R.id.toMain);
-        Button terminate = (Button)findViewById(R.id.terminateActivity);
-
+        FunctionContext = this;
 
         
-
         locationManager = (LocationManager)getSystemService(LOCATION_SERVICE);
     	List<String> providers = locationManager.getAllProviders();
         Criteria criteria = new Criteria();
     	bestProvider = locationManager.getBestProvider(criteria, false);
-    	
+
+
+    	Log.v("Entered", "entered"+s);
+    	Log.v("myname",":"+((Person)this.getApplication()).getName());
+
     	//getAddress();
     	//sendSMS();
-
-        toMain.setOnClickListener(new Button.OnClickListener()
-        {
-              public void onClick(View v)
-              {
-                   Intent intent = new Intent(FunctionActivity.this, WekimiMainActivity.class);
-                   startActivity(intent);
-              }
-        });
-
-        terminate.setOnClickListener(new Button.OnClickListener()
-        {
-              public void onClick(View v)
-              {
-                   finish();
-              }          
-        });
     }
 
    
@@ -89,6 +66,9 @@ public class FunctionActivity extends Activity
 		String DELIVERED = "SMS_DELIVERED";
 		PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent(SENT), 0);
 		PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, new Intent(DELIVERED), 0);
+		
+		String[] sendinglist = new String[(RequestHelpActivity.peopleToSend).size()];
+        sendinglist = RequestHelpActivity.peopleToSend.toArray(sendinglist);
         	
         registerReceiver(new BroadcastReceiver(){
         	@Override
@@ -117,7 +97,7 @@ public class FunctionActivity extends Activity
 
     	
         SmsManager sms = SmsManager.getDefault();
-        for( String phoneNo : sendList)
+        for( String phoneNo : sendinglist)
         {
         	sms.sendTextMessage(phoneNo, null, m, sentPI, deliveredPI);  
         }
@@ -127,10 +107,16 @@ public class FunctionActivity extends Activity
     
     public String getAddress()
     {
+    	
     	String result = "";
+    	Geocoder geocoder = new Geocoder(getApplicationContext(),Locale.getDefault());
+    	locationManager.requestLocationUpdates(bestProvider, 10000, 0, this);
+    	//List<String> providers = locationManager.getAllProviders();
+        
+    	
     	Location location = locationManager.getLastKnownLocation(bestProvider);
-    	Geocoder geocoder = new Geocoder(this, Locale.getDefault());
-    	Log.v("successfully" , "came into getAddress function!"+geocoder);
+    	
+    	Log.v("successfully" , "came into getAddress function!");
         if(location!=null)
     	{
     		 latitude = location.getLatitude();
@@ -162,5 +148,34 @@ public class FunctionActivity extends Activity
 		return result;
         //address1.setText(result);
     }
+    @Override
+    protected void onResume()
+    {
+          super.onResume();
+          locationManager.requestLocationUpdates(bestProvider,20000,1,this);
+
+          String s = "[onResume]";
+          //Location location = locationManager.getLastKnownLocation(bestProvider);
+          Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+     protected void onPause()
+     {
+           super.onPause();
+           locationManager.removeUpdates(this);
+      }
+
+      public void onLocationChanged(Location location)
+      {
+    	  locationManager.requestLocationUpdates(bestProvider,20000,1,this);
+           String s = "[onLocationChanged]";
+           //Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
+           //Toast.makeText(getApplicationContext(),RequestHelpActivity.currAddress,Toast.LENGTH_LONG).show();
+      }
+
+      public void onProviderDisabled(String provider){}
+      public void onProviderEnabled(String provider){}
+      public void onStatusChanged(String provider, int status, Bundle extras){}
     
 }

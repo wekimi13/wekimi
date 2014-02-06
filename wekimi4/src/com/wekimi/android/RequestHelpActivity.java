@@ -51,13 +51,11 @@ import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
  
 
 public class RequestHelpActivity extends NMapActivity implements OnMapStateChangeListener, OnCalloutOverlayListener, LocationListener
-{
-	private LocationManager locationManager;
-	private String bestProvider;
-	private String message = "[Wekimi 도움요청알림]";
+{ 
+	private String message = "[Wekimi도움요청]";
 	private String link = "[Wekimi]앱으로 연결하여 ";
-	String s = "";
-    public static double latitude,longitude;
+	static String currAddress = "";
+    //public static double latitude,longitude;
 	
 	String myState = "도움요청 합니다.";
 	String myLocation = " 택시 안에서 ";
@@ -66,7 +64,7 @@ public class RequestHelpActivity extends NMapActivity implements OnMapStateChang
 	
 	String policenumber="01012341234";
 	String bystandernumber="01012341234";
-	ArrayList<String> peopleToSend = new ArrayList<String>();
+	static ArrayList<String> peopleToSend = new ArrayList<String>();
 
 	
 	public static final String API_KEY = "9b1dce871309fd612badda7b5b0680b7 ";
@@ -75,7 +73,7 @@ public class RequestHelpActivity extends NMapActivity implements OnMapStateChang
 	LinearLayout MapContainer;	
 	NMapViewerResourceProvider mMapViewerResourceProvider = null;
 	NMapOverlayManager mOverlayManager;
-
+	public static String myname;
 
 	
      @Override
@@ -83,7 +81,8 @@ public class RequestHelpActivity extends NMapActivity implements OnMapStateChang
      {
            super.onCreate(savedInstanceState);
            setContentView(R.layout.reqhelp);
-           Log.v("myname",":"+((Person)this.getApplication()).getName());
+           myname = ((Person)this.getApplication()).getName();
+           Log.v("myname",":"+((Person)this.getApplication()).getName()+myname);
            //
            ImageButton viewProfile = (ImageButton)findViewById(R.id.viewProfile);
            ImageButton sendreq = (ImageButton)findViewById(R.id.sendReq);
@@ -113,8 +112,10 @@ public class RequestHelpActivity extends NMapActivity implements OnMapStateChang
            
 
           //set data to textview field
-           name = ((Person)this.getApplication()).getName()+"님이";
-           link += ((Person)this.getApplication()).getName() + "님을 한시빨리 도와주시기 바랍니다!\n 앱 연결 :bit.ly/18ll06r";
+           name = myname+"님이";
+           link += myname + "님을 한시빨리 도와주시기 바랍니다!\n 앱 연결 :bit.ly/18ll06r";
+           Log.v("message1", name);
+           Log.v("message2", link);
            
            msg_text.setText(name+myLocation+myState);
            
@@ -135,22 +136,26 @@ public class RequestHelpActivity extends NMapActivity implements OnMapStateChang
       		other4.setText(othername[3]);
       		other5.setText(othername[4]);
       		other6.setText(othername[5]);
-      		//FRom here.. code for sending SMS//
-      		locationManager = (LocationManager)getSystemService(LOCATION_SERVICE);
+      		
+      		currAddress = ((FunctionActivity)FunctionActivity.FunctionContext).getAddress();
+      		double longitude = FunctionActivity.longitude;
+      		double latitude = FunctionActivity.latitude;
+
+      		//locationManager = (LocationManager)getSystemService(LOCATION_SERVICE);
         	//List<String> providers = locationManager.getAllProviders();
-            Criteria criteria = new Criteria();
-        	bestProvider = locationManager.getBestProvider(criteria, false);
-        	Location location = locationManager.getLastKnownLocation(bestProvider);        	
-       	    if(location!=null)
-       	    {
-       	    	latitude = location.getLatitude();
-       	    	longitude = location.getLongitude();
-       	    	Log.v("the latitude is", "="+latitude);
-       	    	s = getAddress(latitude, longitude);
-       	    	Log.v("The address s is", "="+s);
-       	    }
+            //Criteria criteria = new Criteria();
+        	//bestProvider = locationManager.getBestProvider(criteria, false);
+        	//Location location = locationManager.getLastKnownLocation(bestProvider);        	
+       	    //if(location!=null)
+       	    //{
+       	    //	latitude = location.getLatitude();
+       	    //	longitude = location.getLongitude();
+       	    //	Log.v("the latitude is", "="+latitude);
+       	    //	s = getAddress(latitude, longitude);
+       	    //	Log.v("The address s is", "="+s);
+       	    //}
           
-          address2.setText(s);
+          //address2.setText(s);
         	
    		MapContainer = (LinearLayout) findViewById(R.id.MapContainer);
    		mMapView = new NMapView(this);	
@@ -299,14 +304,14 @@ public class RequestHelpActivity extends NMapActivity implements OnMapStateChang
        			if(police.isChecked()) {peopleToSend.add(policenumber);}
        			if(bystander.isChecked()) {peopleToSend.add(bystandernumber);}
        			
-       			String[] sendinglist = new String[peopleToSend.size()];
-                 sendinglist = peopleToSend.toArray(sendinglist);
+       			
                  
                  message += msg_text.getText().toString();
-                 message += "\n위치 : "+ s ;
+                 message += "\n위치 : "+ currAddress ;
 
-                 sendSMS(sendinglist, message);
-                 sendSMS(sendinglist, link);
+                 ((FunctionActivity)FunctionActivity.FunctionContext).sendSMS(message);
+                 ((FunctionActivity)FunctionActivity.FunctionContext).sendSMS(link);
+                 //((FunctionActivity)FunctionActivity.FunctionContext).sendSMS(WekimiMainActivity.link2);
                  
       			Toast.makeText(getBaseContext(), "전송하였습니다!", 
  						Toast.LENGTH_SHORT).show();
@@ -326,21 +331,14 @@ public class RequestHelpActivity extends NMapActivity implements OnMapStateChang
  			android.util.Log.e("NMAP", "onMapInitHandler: error=" + errorInfo.toString());
  		}
  	}
-
  	@Override
  	public void onZoomLevelChange(NMapView mapview, int level) {}
-
- 
  	@Override
  	public void onMapCenterChange(NMapView mapview, NGeoPoint center) {}
-
-
  	@Override
  	public void onAnimationStateChange(NMapView arg0, int animType, int animState) {}
-
  	@Override
  	public void onMapCenterChangeFine(NMapView arg0) {}
-
  	public NMapCalloutOverlay onCreateCalloutOverlay1(NMapOverlay arg0,NMapOverlayItem arg1, Rect arg2) {
  		Toast.makeText(this, arg1.getTitle(), Toast.LENGTH_SHORT).show();
  		return null;
@@ -351,7 +349,7 @@ public class RequestHelpActivity extends NMapActivity implements OnMapStateChang
 		// TODO Auto-generated method stub
 		return null;
 	}
-	private void sendSMS(String[] sendList, String message)
+	/*private void sendSMS(String[] sendList, String message)
     {      
     	String SENT = "SMS_SENT";
     	String DELIVERED = "SMS_DELIVERED";
@@ -390,7 +388,7 @@ public class RequestHelpActivity extends NMapActivity implements OnMapStateChang
         sms.sendTextMessage(phoneNo, null, message, sentPI, deliveredPI);               
     } 
     
-    String getAddress(double lat, double lon)
+    /*String getAddress(double lat, double lon)
     {
 
     	Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
@@ -410,45 +408,37 @@ public class RequestHelpActivity extends NMapActivity implements OnMapStateChang
     	{
     	}
     	return result;
-    }
+    }*/
     @Override
     protected void onResume()
     {
           super.onResume();
-          locationManager.requestLocationUpdates(bestProvider,20000,1,this);
+          FunctionActivity.locationManager.requestLocationUpdates(FunctionActivity.bestProvider,20000,1,this);
 
           String s = "[onResume]";
-          Location location = locationManager.getLastKnownLocation(bestProvider);
+          //Location location = FunctionActivity.locationManager.getLastKnownLocation(FunctionActivity.bestProvider);
 
-          if(location!=null)
-          { 
-                s += getAddress(location.getLatitude(),location.getLongitude());
-          }
-          Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
+          //Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
     }
 
     @Override
      protected void onPause()
      {
            super.onPause();
-           locationManager.removeUpdates(this);
+           FunctionActivity.locationManager.removeUpdates(this);
       }
 
       public void onLocationChanged(Location location)
       {
-           String s = "[onLocationChanged]";
-           if(location!=null)
-           {
-                 s=getAddress(location.getLatitude(),location.getLongitude());
-           }
-           Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
+           //String s = "[onLocationChanged]";
+           //Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
       }
 
       public void onProviderDisabled(String provider){}
       public void onProviderEnabled(String provider){}
       public void onStatusChanged(String provider, int status, Bundle extras){}
 
-      public Location getCurrentLocation()
+      /*public Location getCurrentLocation()
       {
     	  LocationManager locMngr = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
     	  Location currLoc = null;
@@ -459,6 +449,6 @@ public class RequestHelpActivity extends NMapActivity implements OnMapStateChang
            Log.v("currLoc", "="+currLoc);
 
            return currLoc;
-      }
+      }*/
 }
     
