@@ -65,18 +65,22 @@ public class WekimiMainActivity extends FunctionActivity implements OnClickListe
         startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
         //Intent F = new Intent(this, FunctionActivity.class);
         //startActivity(F);
+        
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);
     	
         mTelephonyMgr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
         myTel = mTelephonyMgr.getLine1Number();
+        
         new HttpAsyncTask().execute("http://wekimi13.cafe24app.com/user?phone=" + myTel);
+        
         String myName = ((Person)this.getApplication()).getName();
         
         
         
     	
     	Log.v("telephone number", ":"+myTel+myName);
-    	super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+    	
                 
 
 

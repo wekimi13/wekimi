@@ -83,7 +83,7 @@ public class RequestHelpActivity extends NMapActivity implements OnMapStateChang
            setContentView(R.layout.reqhelp);
            myname = ((Person)this.getApplication()).getName();
            Log.v("myname",":"+((Person)this.getApplication()).getName()+myname);
-           //
+           
            ImageButton viewProfile = (ImageButton)findViewById(R.id.viewProfile);
            ImageButton sendreq = (ImageButton)findViewById(R.id.sendReq);
            final ImageButton state_scared = (ImageButton)findViewById(R.id.state_scared);
