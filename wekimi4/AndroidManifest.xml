@@ -52,7 +52,8 @@
         <activity android:name="Profile"></activity>
         <activity android:name="Person"></activity>
         <activity android:name="SirenActivity"></activity>
-        <activity android:name="RespondHelpActivity">
+        <activity android:name="RespondHelpActivity"></activity>
+        <activity android:name="BeforeRespondActivity">
              <intent-filter>
         		<action android:name="android.intent.action.VIEW"/> 
         		<category android:name="android.intent.category.DEFAULT"/>

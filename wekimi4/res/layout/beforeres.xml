@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Button xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:layout_gravity="center_horizontal"
+    android:id="@+id/toRespond"
+    android:text="위키미 도움 요청에 대응하려면 버튼을 누르십시오" >
+    
+
+</Button>

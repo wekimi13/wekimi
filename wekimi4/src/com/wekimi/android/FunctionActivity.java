@@ -1,11 +1,25 @@
 package com.wekimi.android;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.content.*;
 import android.telephony.SmsManager;
+import android.telephony.TelephonyManager;
 
 import android.app.Activity;
 import android.app.PendingIntent;
@@ -18,6 +32,7 @@ import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -37,6 +52,18 @@ public class FunctionActivity extends Activity implements LocationListener
 
 	String s = "";
 	public static Context FunctionContext;
+	
+	public static JSONArray others;
+ 	String[] othername = new String[10];
+	String[] otherphone = new String[10];
+	String name;
+	String phone;
+	String gender;
+	String character;
+	String myTel;
+	static String myName;
+	
+	TelephonyManager mTelephonyMgr;
 
 
     @Override
@@ -44,7 +71,12 @@ public class FunctionActivity extends Activity implements LocationListener
     {
     	super.onCreate(savedInstanceState);
         FunctionContext = this;
+        
+        mTelephonyMgr = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
+        myTel = mTelephonyMgr.getLine1Number();
+        Log.v("myTel",myTel);
 
+        new HttpAsyncTask().execute("http://wekimi13.cafe24app.com/user?phone=" + myTel);
         
         locationManager = (LocationManager)getSystemService(LOCATION_SERVICE);
     	List<String> providers = locationManager.getAllProviders();
@@ -53,12 +85,103 @@ public class FunctionActivity extends Activity implements LocationListener
 
 
     	Log.v("Entered", "entered"+s);
-    	Log.v("myname",":"+((Person)this.getApplication()).getName());
 
     	//getAddress();
     	//sendSMS();
     }
 
+    
+    public void Setting(JSONObject jsonObject) throws JSONException {
+		 //JSONObject jsonResultSet = jsonObject.getJSONObject("name");
+	   	  //Toast.makeText(getBaseContext(), "Setting", Toast.LENGTH_SHORT).show();
+
+		name = jsonObject.getString("name");
+	   	phone = jsonObject.getString("phone");
+	   	gender = jsonObject.getString("gender");
+	   	character = jsonObject.getString("character");
+
+	   	
+	   	others = jsonObject.getJSONArray("others");
+	   	
+	   	for(int i = 0; i < others.length(); i++){
+	           JSONObject c = others.getJSONObject(i);
+	           othername[i] = c.getString("name");
+	           otherphone[i] = c.getString("phone");     
+	   	}
+	   	
+	   	
+	   	
+	   	((Person)this.getApplication()).setName(name);
+		((Person)this.getApplication()).setPhone(phone);
+		((Person)this.getApplication()).setGender(gender);
+		((Person)this.getApplication()).setCharacter(character);
+		((Person)this.getApplication()).setOthername(othername);
+		((Person)this.getApplication()).setOtherphone(otherphone);
+		
+		myName = ((Person)this.getApplication()).getName();
+		Log.v("myName1(success)", myName);
+		
+	   
+	   
+	   }
+	   
+	   
+	    private class HttpAsyncTask extends AsyncTask<String, Void, Void> {
+	        @Override
+	        protected Void doInBackground(String... urls) {
+
+	            //Toast.makeText(getBaseContext(), "DoinBackground", Toast.LENGTH_LONG).show();
+
+	            InputStream inputStream =null;
+	            String result = "";
+	            
+	          try {
+	          	 
+	              // 1. create HttpClient
+	              HttpClient httpclient = new DefaultHttpClient();
+	              HttpGet httpGet = new HttpGet(urls[0]);
+	              HttpResponse httpResponse = httpclient.execute(httpGet);
+	              HttpEntity httpEntity = httpResponse.getEntity();
+	              
+	              if(httpEntity != null) {
+	                  
+	              	inputStream = httpEntity.getContent();
+	              	BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+	              	StringBuilder stringBuilder = new StringBuilder();
+	              	
+	              	String ligneLue = bufferedReader.readLine();
+	              	
+	              	while(ligneLue != null){
+	                      stringBuilder.append(ligneLue + " \n");
+	                      ligneLue = bufferedReader.readLine();
+	                  }
+	              	bufferedReader.close();
+	              
+	              	JSONObject jsonObject = new JSONObject(stringBuilder.toString());
+	              	Log.i("Chaine JSON", stringBuilder.toString());
+	              	
+	              	Setting(jsonObject);
+	              	
+	              	
+	     	
+	              
+	              }
+	              
+	          } catch (ClientProtocolException e) {
+	              e.printStackTrace();
+	              } catch (IOException e) {
+	              e.printStackTrace();
+	      } catch (JSONException e) {
+	  				// TODO Auto-generated catch block
+	  				e.printStackTrace();
+	  			}
+
+
+	  		return null;
+	        }
+	        // onPostExecute displays the results of the AsyncTask.
+	       
+	    } 
    
 	public void sendSMS(String m)
     {      
