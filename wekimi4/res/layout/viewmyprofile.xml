@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+ 
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"    
+        android:background="#C0C0C0"
+        android:textColor="#FFF"
+        android:textSize="18sp"
+        android:layout_marginBottom="5dp"
+        android:text="상세프로필 보기 " />
+ 
+   <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+ 
+       <TextView
+            android:id="@+id/tvName"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:text="이름 "
+            android:layout_alignBaseline="@+id/etName"/>
+       <EditText
+            android:id="@+id/etName"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tvName"/>
+       <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvName"
+            android:text="전화번호 "
+            android:layout_alignBaseline="@+id/etPhone"/>
+       <EditText
+            android:id="@+id/etPhone"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tvPhone"
+            android:layout_below="@+id/etName"/>
+       <TextView
+            android:id="@+id/tvGender"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvPhone"
+            android:text="성별 "
+            android:layout_alignBaseline="@+id/etGender"/>
+       <EditText
+            android:id="@+id/etGender"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tvGender"
+            android:layout_below="@+id/etPhone"/>
+        <TextView
+            android:id="@+id/tvCharacter"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvGender"
+            android:text="신체적 특징 "
+            android:layout_alignBaseline="@+id/etCharacter"/>
+       <EditText
+            android:id="@+id/etCharacter"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tvCharacter"
+            android:layout_below="@+id/etGender"/> 
+   </RelativeLayout>
+
+   <EditText
+       android:id="@+id/eventView"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="TextView" />
+   
+       <ListView
+        android:id="@+id/activityView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="14dp" >
+    </ListView>
+ 
+ 
+</LinearLayout>
