@@ -25,7 +25,7 @@ import android.view.View;
 import android.widget.Button;
  
 
-public class BeforeRespondActivity extends Activity
+public class BeforeRespondActivity extends FunctionActivity
 {
 	String[] othername = new String[10];
 	String[] otherphone = new String[10];

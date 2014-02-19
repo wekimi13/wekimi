@@ -46,6 +46,7 @@
         <activity android:name="RequestHelpActivity" >
         </activity>
         <activity android:name="ViewProfileActivty"></activity>
+        <activity android:name="ViewMyProfile"></activity>
         <activity android:name="NMapPOIflagType"></activity>
         <activity android:name="NMapViewResourceProvider"></activity>
         <activity android:name="GetJSON"></activity>

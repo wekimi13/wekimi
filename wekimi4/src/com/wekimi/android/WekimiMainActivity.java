@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Locale;
 
 import org.apache.http.HttpEntity;
@@ -41,6 +42,7 @@ public class WekimiMainActivity extends FunctionActivity implements OnClickListe
 	public static String E_message = new String();            //First msg to send when in Emergency 
 	private String E_link = "[Wekimi]즉시 앱으로 연결하여";           //Second msg to send with link attached at the back
 	static String link2 = "";
+	static ArrayList<String> peopleToSend = new ArrayList<String>();
 
 	
     /** Called when the activity is first created. */
@@ -68,6 +70,7 @@ public class WekimiMainActivity extends FunctionActivity implements OnClickListe
         
         E_message = "[Wekimi 위급알림]" + ((Person)this.getApplication()).getName()+ "님 매우 위급!\n 위치 :";
         E_link += ((Person)this.getApplication()).getName() + "님을 도와주세요!!\n 앱 연결 :bit.ly/18ll06r ";
+        
        
         
         siren.setOnClickListener(new Button.OnClickListener()
@@ -82,11 +85,15 @@ public class WekimiMainActivity extends FunctionActivity implements OnClickListe
         {
             public void onClick(View v)
             {
+            	peopleToSend.add(otherphone[0]);
+                //peopleToSend.add(otherphone[1]);
+                //peopleToSend.add(otherphone[2]);
+                Log.v("peopleToSend", peopleToSend.toString());
             	E_message += ((FunctionActivity)FunctionActivity.FunctionContext).getAddress();
             	Log.v("the message to send is" , ":"+E_message+E_link+link2);
                 //sendSMS(E_message);
                 //sendSMS(E_link);
-                ((FunctionActivity)FunctionActivity.FunctionContext).sendSMS(link2);
+                //((FunctionActivity)FunctionActivity.FunctionContext).sendSMS(link2, peopleToSend);
             	//Intent intent = new Intent(WekimiMainActivity.this, EmergencyActivity.class);
                 //startActivity(intent);
             }
@@ -137,6 +144,10 @@ public class WekimiMainActivity extends FunctionActivity implements OnClickListe
         }*/
     }
     
+    public void onStart(){
+    	super.onStart();
+    	Log.v("onStart", "onStart");
+    }
     
    
     

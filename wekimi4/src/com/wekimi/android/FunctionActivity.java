@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -17,12 +18,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.*;
-import android.telephony.SmsManager;
-import android.telephony.TelephonyManager;
-
 import android.app.Activity;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -34,11 +32,9 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
+import android.telephony.SmsManager;
+import android.telephony.TelephonyManager;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
  
 public class FunctionActivity extends Activity implements LocationListener
@@ -47,6 +43,7 @@ public class FunctionActivity extends Activity implements LocationListener
 	public static String bestProvider;
 
     public static double latitude,longitude;
+    protected int splashTime=2000;
 	
 	//String sendList[] = {"01094585713"};
 
@@ -82,6 +79,7 @@ public class FunctionActivity extends Activity implements LocationListener
     	List<String> providers = locationManager.getAllProviders();
         Criteria criteria = new Criteria();
     	bestProvider = locationManager.getBestProvider(criteria, false);
+    	
 
 
     	Log.v("Entered", "entered"+s);
@@ -183,15 +181,15 @@ public class FunctionActivity extends Activity implements LocationListener
 	       
 	    } 
    
-	public void sendSMS(String m)
+	public void sendSMS(String m, ArrayList<String> ppl)
     {      
 		String SENT = "SMS_SENT";
 		String DELIVERED = "SMS_DELIVERED";
 		PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent(SENT), 0);
 		PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, new Intent(DELIVERED), 0);
 		
-		String[] sendinglist = new String[(RequestHelpActivity.peopleToSend).size()];
-        sendinglist = RequestHelpActivity.peopleToSend.toArray(sendinglist);
+		String[] sendinglist = new String[ppl.size()];
+        sendinglist = ppl.toArray(sendinglist);
         	
         registerReceiver(new BroadcastReceiver(){
         	@Override
@@ -259,7 +257,8 @@ public class FunctionActivity extends Activity implements LocationListener
     		{
     			Address address = list.get(0);
     			Log.v("the address is" , "this : "+ address);
-    			result = address.getAddressLine(0)+","+address.getLocality();
+    			result = address.getAddressLine(0);
+    			//result = address.getAddressLine(0)+","+address.getLocality();
     		}
     	}
     	catch(IOException e)

@@ -1,26 +1,13 @@
 package com.wekimi.android;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
-import android.app.Activity;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.Rect;
-import android.location.Address;
-import android.location.Criteria;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -32,10 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nhn.android.maps.NMapActivity;
-import com.nhn.android.maps.NMapCompassManager;
 import com.nhn.android.maps.NMapController;
-import com.nhn.android.maps.NMapLocationManager;
-import com.nhn.android.maps.NMapLocationManager.OnLocationChangeListener;
 import com.nhn.android.maps.NMapOverlay;
 import com.nhn.android.maps.NMapOverlayItem;
 import com.nhn.android.maps.NMapView;
@@ -44,7 +28,6 @@ import com.nhn.android.maps.maplib.NGeoPoint;
 import com.nhn.android.maps.nmapmodel.NMapError;
 import com.nhn.android.maps.overlay.NMapPOIdata;
 import com.nhn.android.mapviewer.overlay.NMapCalloutOverlay;
-import com.nhn.android.mapviewer.overlay.NMapMyLocationOverlay;
 import com.nhn.android.mapviewer.overlay.NMapOverlayManager;
 import com.nhn.android.mapviewer.overlay.NMapOverlayManager.OnCalloutOverlayListener;
 import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
@@ -53,6 +36,7 @@ import com.nhn.android.mapviewer.overlay.NMapPOIdataOverlay;
 public class RequestHelpActivity extends NMapActivity implements OnMapStateChangeListener, OnCalloutOverlayListener, LocationListener
 { 
 	private String message = "[Wekimi도움요청]";
+	private String message2;
 	private String link = "[Wekimi]앱으로 연결하여 ";
 	static String currAddress = "";
     //public static double latitude,longitude;
@@ -140,6 +124,7 @@ public class RequestHelpActivity extends NMapActivity implements OnMapStateChang
       		currAddress = ((FunctionActivity)FunctionActivity.FunctionContext).getAddress();
       		double longitude = FunctionActivity.longitude;
       		double latitude = FunctionActivity.latitude;
+      		address2.setText(currAddress);
 
       		//locationManager = (LocationManager)getSystemService(LOCATION_SERVICE);
         	//List<String> providers = locationManager.getAllProviders();
@@ -307,10 +292,11 @@ public class RequestHelpActivity extends NMapActivity implements OnMapStateChang
        			
                  
                  message += msg_text.getText().toString();
-                 message += "\n위치 : "+ currAddress ;
+                 message2 += "\n위치 : "+ currAddress ;
 
-                 ((FunctionActivity)FunctionActivity.FunctionContext).sendSMS(message);
-                 ((FunctionActivity)FunctionActivity.FunctionContext).sendSMS(link);
+                 ((FunctionActivity)FunctionActivity.FunctionContext).sendSMS(message, peopleToSend);
+                 ((FunctionActivity)FunctionActivity.FunctionContext).sendSMS(message2, peopleToSend);
+                 ((FunctionActivity)FunctionActivity.FunctionContext).sendSMS(link, peopleToSend);
                  //((FunctionActivity)FunctionActivity.FunctionContext).sendSMS(WekimiMainActivity.link2);
                  
       			Toast.makeText(getBaseContext(), "전송하였습니다!", 

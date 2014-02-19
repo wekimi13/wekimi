@@ -15,11 +15,20 @@ public class Settings extends Activity {
         setContentView(R.layout.settings);
         
         Button register = (Button)findViewById(R.id.register);
+        Button viewMyProfile = (Button)(Button)findViewById(R.id.viewMyProfile);
         register.setOnClickListener(new Button.OnClickListener()
         {
             public void onClick(View v)
             {
                    Intent intent = new Intent(Settings.this, Register.class);
+                   startActivity(intent);
+            }
+         });
+        viewMyProfile.setOnClickListener(new Button.OnClickListener()
+        {
+            public void onClick(View v)
+            {
+                   Intent intent = new Intent(Settings.this, ViewMyProfile.class);
                    startActivity(intent);
             }
          });
