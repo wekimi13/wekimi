@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background_simplecolor"
+    android:orientation="vertical"
+    android:weightSum="1" >
+  
+
+ <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:src="@drawable/register_topbar"/>
+ <LinearLayout 
+     android:layout_width="fill_parent"
+     android:layout_height="wrap_content"
+     android:orientation="vertical"
+     android:background="@color/white"
+     >
+     <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"    
+        android:src="@drawable/register_process2"
+        android:gravity="center_vertical"
+        android:background="@color/white"
+        android:layout_marginTop="12pt"
+     android:layout_marginBottom="5pt"
+        />
+     
+ </LinearLayout>
+ 
+           <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:src="@drawable/underbar" />      
+
+<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="9pt"
+      android:layout_marginRight="9pt"
+      android:orientation="vertical">
+     
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:gravity="center_vertical">
+         
+                    <LinearLayout
+               android:orientation="vertical" 
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content">
+               
+           <ImageView
+            android:id="@+id/RegPic"
+            android:layout_width="100dp" 
+            android:layout_height="100dp"
+            android:background="@drawable/back_register"
+            android:layout_margin="5pt"
+            android:onClick="onClick"/>
+           
+           	<Button 
+			android:layout_height="wrap_content" 
+			android:text="Load Picture" 
+			android:layout_width="wrap_content" 
+			android:id="@+id/LoadPic" 
+			android:layout_weight="0" 
+			android:layout_gravity="center"/>
+           	</LinearLayout>
+           
+           <LinearLayout
+               android:orientation="vertical" 
+               android:layout_width="fill_parent"
+               android:layout_height="wrap_content">
+
+ 
+       <ImageView
+            android:id="@+id/RegtvName"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/register_name"
+            android:layout_marginBottom="1pt"
+            />
+       
+       <EditText
+            android:id="@+id/RegetName"
+            android:layout_width="fill_parent" 
+            android:layout_height="30dp"
+            android:textSize="15dp"
+            android:background="@drawable/back_register"
+            android:gravity="top"
+            android:layout_marginBottom="2pt"
+            />
+       
+       <ImageView
+            android:id="@+id/RegtvPhone"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/register_phone"
+            android:layout_marginBottom="1pt"/>
+       <EditText
+            android:id="@+id/RegetPhone"
+            android:layout_width="match_parent" 
+            android:layout_height="30dp"
+            android:textSize="15dp"
+            android:hint="'-없이 번호만'"
+            android:background="@drawable/back_register"
+            android:gravity="top"
+            android:layout_marginBottom="2pt"/>
+       </LinearLayout>
+       </LinearLayout>
+       
+       <ImageView
+            android:id="@+id/RegtvGender"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/register_sex"
+            android:layout_marginBottom="1pt"/>
+  
+       <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="2pt">
+        
+           <RadioGroup 
+               android:checkedButton="@+id/radiogroup"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+              
+             
+       <RadioButton
+           android:id="@+id/radiom"
+            android:textSize="15dp"
+            android:textColor="#231F20"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginRight="10pt"
+           android:text="남자" />
+       
+              <RadioButton
+           android:id="@+id/radiof"
+            android:textSize="15dp"
+        android:textColor="#231F20"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="여자" />
+              
+           </RadioGroup> 
+              </LinearLayout>
+                           
+              
+        <ImageView
+            android:id="@+id/RegtvCharacter"
+             android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/register_character"
+            android:layout_marginBottom="1pt"/>
+               
+               <EditText
+            android:id="@+id/RegetCharacter"
+            android:layout_width="match_parent" 
+            android:layout_height="90dp"
+            android:textSize="15dp"
+            android:hint="다른 사람이 나를 알아볼 수 있도록 자신의 신체 특징을 자세하게 적어주세요.\n예) 키가 크고 머리가 길며 갈색이다."
+            android:background="@drawable/back_register"
+            android:gravity="top"
+            android:layout_marginBottom="2pt"/>
+               
+                    
+       
+   <ImageButton 
+      android:layout_height="wrap_content" 
+      android:layout_width="wrap_content" 
+      android:id="@+id/register_next" 
+      android:src="@drawable/register_next"
+      android:background="@null"
+      android:layout_gravity="right"
+            />
+ 
+
+
+    </LinearLayout>
+
+    </LinearLayout>
+

@@ -38,13 +38,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="FunctionActivity" >
-
-        </activity>
-        <activity android:name="GiveHelpActivity" >
-        </activity>
-        <activity android:name="RequestHelpActivity" >
-        </activity>
+        <activity android:name="FunctionActivity" ></activity>
+        <activity android:name="GiveHelpActivity" ></activity>
+        <activity android:name="RequestHelpActivity"></activity>
         <activity android:name="ViewProfileActivty"></activity>
         <activity android:name="ViewMyProfile"></activity>
         <activity android:name="NMapPOIflagType"></activity>
@@ -64,5 +60,11 @@
         </activity>
         <activity android:name="Settings"></activity>
         <activity android:name="Register"></activity>
+        <activity android:name="ContactRowDetail"></activity>
+        <activity android:name="RegisterContact"></activity>
+        <activity android:name="RegisterMyInfo"></activity>
+        <activity android:name="RegisterPic"></activity>
+        <activity android:name="Tab1"></activity>
+        <activity android:name="Tab2"></activity>
     </application>
 </manifest>

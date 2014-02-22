@@ -47,8 +47,7 @@ public class Register extends Activity {
 	static String[] otherphone = new String[10];
     private String jsonResult;
 
-    private String url_contact = "http://wekimi13.dothome.co.kr/insertContact.php";
-    private String url_event = "http://wekimi13.dothome.co.kr/insertEvent.php";
+    private String url = "http://wekimi13.dothome.co.kr/insertMember.php";
 
     //private String url_contact = "http://wekimi13.dothome.co.kr/insertContact.php";
 
@@ -92,16 +91,16 @@ public class Register extends Activity {
      		  public void onClick(View v) {
      			 
      			
-     			
+     			 
                
 
               
     			Toast.makeText(getBaseContext(), "요청즁 ... ", 
 						Toast.LENGTH_SHORT).show();
-    			InsertContact task = new InsertContact();
+    			InsertMember task = new InsertMember();
 
      		    // passes values for the urls string array 
-     		    task.execute(new String[] { url_contact });
+     		    task.execute(new String[] { url });
 
   
      	 
@@ -112,7 +111,7 @@ public class Register extends Activity {
 	}
 	
 	  
-    private class InsertContact extends AsyncTask<String, Void, String> {
+    private class InsertMember extends AsyncTask<String, Void, String> {
     	  @Override
     	  protected String doInBackground(String... params) {
     	   HttpClient httpclient = new DefaultHttpClient();
@@ -120,12 +119,27 @@ public class Register extends Activity {
     	   
     	   try {
    
-    		   ////
-    		   nameValuePairs = new ArrayList<NameValuePair>(4);
-    		   nameValuePairs.add(new BasicNameValuePair("phone", "01040395540"));
+  /*
+    		   nameValuePairs = new ArrayList<NameValuePair>(8);
+    		   nameValuePairs.add(new BasicNameValuePair("mname", etname.getText().toString()));
+    		   nameValuePairs.add(new BasicNameValuePair("mphone", etphone.getText().toString()));
+    		   nameValuePairs.add(new BasicNameValuePair("mgender", etgender.getText().toString()));
+    		   nameValuePairs.add(new BasicNameValuePair("mcharacter", etcharacter.getText().toString()));
+    		   nameValuePairs.add(new BasicNameValuePair("mlocation", "Cheonan"));
     		   nameValuePairs.add(new BasicNameValuePair("cname", etothername1.getText().toString()));
     		   nameValuePairs.add(new BasicNameValuePair("cphone", etotherphone1.getText().toString()));
     		   nameValuePairs.add(new BasicNameValuePair("cgroup", "friend"));
+    		   */
+    		   nameValuePairs = new ArrayList<NameValuePair>(8);
+    		   nameValuePairs.add(new BasicNameValuePair("mname", "한글테스트"));
+    		   nameValuePairs.add(new BasicNameValuePair("mphone", "01077477742"));
+    		   nameValuePairs.add(new BasicNameValuePair("mgender", "여자"));
+    		   nameValuePairs.add(new BasicNameValuePair("mcharacter", "까만 불테안경에 신장 160")); 
+    		   nameValuePairs.add(new BasicNameValuePair("mlocation", "천안"));
+    		   nameValuePairs.add(new BasicNameValuePair("cname", "한글친구영어"));
+    		   nameValuePairs.add(new BasicNameValuePair("cphone", "01097977975"));
+    		   nameValuePairs.add(new BasicNameValuePair("cgroup", "친구"));
+    		   
     		
 // String str = URLEncoder.encode(str1, "utf-8");
 
@@ -174,12 +188,9 @@ public class Register extends Activity {
      
 
      
-     
      // build hash set for list view
      public void ListDrwaer() {
-      List<Map<String, String>> employeeList = new ArrayList<Map<String, String>>();
      
-      String outPut = jsonResult;
       Toast.makeText(getBaseContext(), jsonResult, 
 				Toast.LENGTH_LONG).show();
    

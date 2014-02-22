@@ -1,37 +1,57 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8" ?>  
 <LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
     android:orientation="vertical" 
-    android:layout_height="match_parent" 
-    android:layout_width="match_parent" 
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    
-    <TextView 
-        android:layout_height="wrap_content" 
-        android:layout_width="fill_parent" 
-        android:gravity="center" 
-        android:textStyle="bold" 
-        android:text="설정 " 
-        android:textSize="20dp" 
-        android:textColor="#FFF" 
-        android:background="#33CEC3" 
-        android:layout_gravity="center_horizontal"/>
-    <Button 
-        android:layout_height="wrap_content" 
-        android:layout_width="fill_parent" 
-        android:text="정보 수정 " 
-        android:textSize="16sp" 
-        android:id="@+id/modify"/>
-    
-    <Button 
-        android:layout_height="wrap_content" 
-        android:layout_width="fill_parent" 
-        android:text="회원 가입 " 
-        android:textSize="16sp" 
-        android:id="@+id/register"/>
-    <Button 
-        android:layout_height="wrap_content" 
-        android:layout_width="fill_parent" 
-        android:text="내정보 보기" 
-        android:textSize="16sp" 
-        android:id="@+id/viewMyProfile"/>
-</LinearLayout>
+    android:background="@drawable/background_simplecolor"
+   
+                           
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent" 
+    android:weightSum="1">
+ <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:src="@drawable/setting_topbar" />
+  <LinearLayout 
+    android:orientation="vertical" 
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content"
+                android:layout_marginLeft="7pt"
+        android:layout_marginRight="7pt"
+                android:layout_marginTop="5pt"
+        
+                android:layout_marginBottom="5pt"
+    android:background="@drawable/back_setting" 
+    android:weightSum="1">
+
+
+    <ImageButton
+android:id="@+id/modify"
+      android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+     android:background="#ffffff"
+     android:src="@drawable/editprofilebutton"
+     android:gravity="center" 
+                     android:layout_marginBottom="2pt"
+     />
+
+    <ImageButton
+android:id="@+id/register"
+      android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+     android:background="#ffffff"
+     android:src="@drawable/registerbutton"
+     android:gravity="center"
+                          android:layout_marginBottom="2pt"
+      />
+    <ImageButton
+android:id="@+id/viewMyProfile"
+      android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+     android:background="#ffffff"
+     android:src="@drawable/viewmyprofilebutton"
+     android:gravity="center" />
+
+    </LinearLayout>
+</LinearLayout> 

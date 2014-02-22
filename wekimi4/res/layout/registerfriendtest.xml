@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background_simplecolor"
+    android:orientation="vertical"
+    android:weightSum="1" >
+
+ <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:src="@drawable/register_topbar"/>
+
+                 <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"    
+        android:src="@drawable/register_friendinfo"
+        android:gravity="center"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"/>
+   
+                 <!--  
+                      <ImageButton
+          android:id="@+id/register_plusfriend"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:background="@null"
+          android:layout_gravity="right"                                                                         
+          android:src="@drawable/register_plusfriend"
+          android:layout_marginBottom="1pt"
+          android:layout_marginLeft="9pt"
+          android:layout_marginRight="9pt" />
+                 
+                 
+       
+        <ImageView
+            android:id="@+id/RegtvFriend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/register_friend"
+            android:gravity="center"
+            android:layout_marginLeft="9pt"
+            android:layout_marginRight="9pt"
+            android:layout_marginBottom="3pt"/>
+                 
+  -->               
+ 
+ 
+                 <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="9pt"
+        android:layout_marginRight="9pt"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+                 
+        <ImageView
+            android:id="@+id/RegtvFriend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/register_friend"
+            android:layout_marginTop="10pt" 
+            android:layout_alignParentLeft="true"/>"
+
+         <ImageButton
+             android:id="@+id/register_plusfriend"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:background="@null"
+             android:layout_gravity="right"                                                                         
+             android:src="@drawable/register_plusfriend"                          
+             android:layout_marginBottom="5pt"
+             android:layout_marginTop="5pt"
+             android:layout_alignParentRight="true"
+             android:layout_alignBaseline="@+id/RegtvFriend"/> 
+               </RelativeLayout>
+          
+
+                                  
+<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="9pt"
+      android:layout_marginRight="9pt"
+      android:orientation="horizontal">
+
+           
+                  <EditText
+            android:id="@+id/RegtvOtherName1"
+            android:layout_width="90dp" 
+            android:layout_height="30dp"
+            android:textSize="15dp"
+            android:hint="이름"
+            android:background="@drawable/back_register"
+            android:gravity="top"
+            android:layout_marginBottom="2pt"
+            android:layout_marginRight="2pt"
+            />
+                  <EditText
+            android:id="@+id/RegtvOtherPhone1"
+            android:layout_width="180dp" 
+            android:layout_height="30dp"
+            android:textSize="15dp"
+            android:hint="전화번호"
+            android:background="@drawable/back_register"
+            android:gravity="top"
+            android:layout_marginBottom="2pt"
+            />
+                  </LinearLayout>
+                 
+                 
+ <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="9pt"
+      android:layout_marginRight="9pt"
+      android:orientation="horizontal">
+
+           
+                  <EditText
+            android:id="@+id/RegtvOtherName2"
+            android:layout_width="90dp" 
+            android:layout_height="30dp"
+            android:textSize="15dp"
+            android:hint="이름"
+            android:background="@drawable/back_register"
+            android:gravity="top"
+            android:layout_marginBottom="2pt"
+            android:layout_marginRight="2pt"
+            />
+                  <EditText
+            android:id="@+id/RegtvOtherPhone2"
+            android:layout_width="180dp" 
+            android:layout_height="30dp"
+            android:textSize="15dp"
+            android:hint="전화번호"
+            android:background="@drawable/back_register"
+            android:gravity="top"
+            android:layout_marginBottom="2pt"
+            />
+                  </LinearLayout>
+<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="9pt"
+      android:layout_marginRight="9pt"
+      android:orientation="horizontal">
+
+           
+                  <EditText
+            android:id="@+id/RegtvOtherName3"
+            android:layout_width="90dp" 
+            android:layout_height="30dp"
+            android:textSize="15dp"
+            android:hint="이름"
+            android:background="@drawable/back_register"
+            android:gravity="top"
+            android:layout_marginBottom="2pt"
+            android:layout_marginRight="2pt"
+            />
+                  <EditText
+            android:id="@+id/RegtvOtherPhone3"
+            android:layout_width="180dp" 
+            android:layout_height="30dp"
+            android:textSize="15dp"
+            android:hint="전화번호"
+            android:background="@drawable/back_register"
+            android:gravity="top"
+            android:layout_marginBottom="2pt"
+            />
+                  </LinearLayout>
+<LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="9pt"
+      android:layout_marginRight="9pt"
+      android:orientation="horizontal">
+
+           
+                  <EditText
+            android:id="@+id/RegtvOtherName4"
+            android:layout_width="90dp" 
+            android:layout_height="30dp"
+            android:textSize="15dp"
+            android:hint="이름"
+            android:background="@drawable/back_register"
+            android:gravity="top"
+            android:layout_marginBottom="2pt"
+            android:layout_marginRight="2pt"
+            />
+                  <EditText
+            android:id="@+id/RegtvOtherPhone4"
+            android:layout_width="180dp" 
+            android:layout_height="30dp"
+            android:textSize="15dp"
+            android:hint="전화번호"
+            android:background="@drawable/back_register"
+            android:gravity="top"
+            android:layout_marginBottom="2pt"
+            />
+                  </LinearLayout>
+ 
+             
+     <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp" >
+       
+        <LinearLayout
+            android:id="@+id/linearLayoutForm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+            </LinearLayout>
+        
+       </ScrollView>
+       
+   
+   <ImageButton 
+      android:layout_height="wrap_content" 
+      android:layout_width="wrap_content" 
+      android:id="@+id/sendReg" 
+      android:src="@drawable/register_send"
+      android:background="@null"
+      android:layout_gravity="right"
+      android:layout_marginRight="9pt"
+            />
+ 
+
+        </LinearLayout>

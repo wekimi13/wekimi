@@ -13,7 +13,7 @@
         android:id="@+id/imageView1"
         android:layout_width="fill_parent"
         android:layout_height="60dp"
-        android:src="@drawable/reqhelp_topbar" />
+        android:src="@drawable/respondreq_topbar" />
 
     <LinearLayout 
     android:orientation="horizontal" 

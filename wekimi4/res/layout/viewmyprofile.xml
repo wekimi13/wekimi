@@ -1,89 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
- 
-    <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/background_simplecolor"
+    android:orientation="vertical"
+    android:weightSum="1" >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="60dp"
+        android:src="@drawable/reqhelp_topbar" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginTop="5dp"
+            android:layout_weight="29.14"
+            android:background="@drawable/background_profile"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/profile_image2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:src="@drawable/profile_image" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_marginLeft="7dp"
+                android:layout_marginRight="7dp"
+                android:orientation="vertical"
+                android:weightSum="1" >
+
+                <TextView
+                    android:id="@+id/tvName2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="22dp"
+                    android:textStyle="bold"
+                    android:color="#AAABAB" />
+
+                <TextView
+                    android:id="@+id/tvGender2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    android:color="#AAABAB" />
+
+                <TextView
+                    android:id="@+id/tvDescription2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="14dp"
+                    android:color="#AAABAB" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"    
-        android:background="#C0C0C0"
-        android:textColor="#FFF"
-        android:textSize="18sp"
-        android:layout_marginBottom="5dp"
-        android:text="상세프로필 보기 " />
- 
-   <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
- 
-       <TextView
-            android:id="@+id/tvName"
-            android:layout_width="50dp"
+        android:src="@drawable/underbar" />
+  
+    <TabHost 
+    android:id="@android:id/tabhost"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+     
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+         
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+             
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="이름 "
-            android:layout_alignBaseline="@+id/etName"/>
-       <EditText
-            android:id="@+id/etName"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tvName"/>
-       <TextView
-            android:id="@+id/tvPhone"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvName"
-            android:text="전화번호 "
-            android:layout_alignBaseline="@+id/etPhone"/>
-       <EditText
-            android:id="@+id/etPhone"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tvPhone"
-            android:layout_below="@+id/etName"/>
-       <TextView
-            android:id="@+id/tvGender"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvPhone"
-            android:text="성별 "
-            android:layout_alignBaseline="@+id/etGender"/>
-       <EditText
-            android:id="@+id/etGender"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tvGender"
-            android:layout_below="@+id/etPhone"/>
-        <TextView
-            android:id="@+id/tvCharacter"
-            android:layout_width="50dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tvGender"
-            android:text="신체적 특징 "
-            android:layout_alignBaseline="@+id/etCharacter"/>
-       <EditText
-            android:id="@+id/etCharacter"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tvCharacter"
-            android:layout_below="@+id/etGender"/> 
-   </RelativeLayout>
+            android:paddingLeft="14dp"
+            android:paddingRight="14dp"
+            
+                android:background="@color/white"
+                android:gravity="center"
+            /> 
+             
+    </LinearLayout>
+     
+</TabHost>
 
-   <EditText
-       android:id="@+id/eventView"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="TextView" />
-   
-       <ListView
-        android:id="@+id/activityView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="14dp" >
-    </ListView>
- 
- 
 </LinearLayout>
